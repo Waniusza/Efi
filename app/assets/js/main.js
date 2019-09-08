@@ -27,7 +27,7 @@ let selectedPhrase;
                 console.log(years);
             }).catch(err => {
                 console.warn("Could not load data", err);
-                // TODO wyświetlić informacje dla użytkownika o błędzie
+                alert("Błąd ładowania danych, skontaktuj się z developerem.")
             })
     })
 

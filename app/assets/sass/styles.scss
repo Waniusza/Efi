@@ -3,6 +3,16 @@ $mainColor: rgba(11, 208, 224, 1);
 $bodyColor: rgb(240, 240, 240);
 $panelColor: rgb(250, 250, 250);
 
+%acordeon-button {
+  margin-left: 5px;
+  content: "";
+  border: solid $mainColor;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+
 body {
   background-color: rgb(240, 240, 240);
 }
@@ -133,16 +143,12 @@ body {
         }
         .multiFilesLink {
           &::after {
-            margin-left: 5px;
-            content: "";
-            border: solid $mainColor;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 3px;
+            @extend %acordeon-button;
             transform: rotate(45deg);
             -webkit-transform: rotate(45deg);
           }
           &.show::after {
+            @extend %acordeon-button;
             transform: rotate(225deg);
             -webkit-transform: rotate(225deg);
           }
