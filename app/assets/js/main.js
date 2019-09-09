@@ -15,7 +15,7 @@ let selectedPhrase;
             .then(data => {
                 console.log("Wynik", data);
                 allRaports = data;
-
+                console.log("TT");
                 categories.push(...fetchCategories(data));
                 years.push(...fetchYearsOrdered(data));
 
@@ -32,26 +32,33 @@ let selectedPhrase;
     })
 
     function fetchCategories(elements) {
-        let result = Array();
-        elements.forEach(element => {
-            let elCategory = element.category;
-            if (result.indexOf(elCategory) == -1) {
-                result.push(elCategory);
-            }
-        });
-        return result;
+        // let result = Array();
+        // elements.forEach(element => {
+        //     let elCategory = element.category;
+        //     if (result.indexOf(elCategory) == -1) {
+        //         result.push(elCategory);
+        //     }
+        // });
+        // return result;
+        return new Set(
+            elements.map(raport => raport.category)
+        )
     }
 
     function fetchYearsOrdered(elements) {
-        let result = Array();
-        elements.forEach(element => {
-            let elYear = (new Date(element.date)).getFullYear();
-            if (result.indexOf(elYear) == -1) {
-                result.push(elYear);
-            }
-            result.sort((a, b) => b - a);
-        });
-        return result;
+        // let result = Array();
+        // elements.forEach(element => {
+        //     let elYear = (new Date(element.date)).getFullYear();
+        //     if (result.indexOf(elYear) == -1) {
+        //         result.push(elYear);
+        //     }
+        //     result.sort((a, b) => b - a);
+        // });
+        // return result;
+        return new Set(
+            elements
+                .map(raport => new Date(raport.date).getFullYear())
+                .sort((a, b) => b - a));
     }
 
     function loadData() {
